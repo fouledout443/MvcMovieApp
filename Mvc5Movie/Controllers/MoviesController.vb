@@ -1,4 +1,7 @@
-﻿Imports System
+﻿'Option Strict On
+Option Explicit On
+
+Imports System
 Imports System.Collections.Generic
 Imports System.Data
 Imports System.Data.Entity
@@ -15,8 +18,29 @@ Namespace Mvc5Movie
         Private db As New MovieDBContext
 
         ' GET: /Movies/
-        Function Index() As ActionResult
-            Return View(db.Movies.ToList())
+        Function Index(ByVal movieGenre As String, ByVal searchString As String) As ActionResult
+            'Dim searchString As String = id
+            Dim genreList As New List(Of String)
+            Dim genreQuery = From m In db.Movies
+                             Order By m.Genre
+                             Select m.Genre
+            'add distinct genres to list
+            genreList.AddRange(genreQuery.Distinct)
+
+            ViewBag.movieGenre = New SelectList(genreList)
+
+            Dim movies = From m In db.Movies Select m
+
+            If Not String.IsNullOrEmpty(searchString) Then
+                movies = movies.Where(Function(movie) movie.Title.Contains(searchString))
+            End If
+
+            If Not String.IsNullOrEmpty(movieGenre) Then
+                movies = movies.Where(Function(movie) movie.Genre.Equals(movieGenre))
+            End If
+
+            Return View(movies)
+
         End Function
 
         ' GET: /Movies/Details/5
@@ -67,7 +91,7 @@ Namespace Mvc5Movie
         'more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Edit(<Bind(Include := "ID,Title,ReleaseDate,Genre,Price")> ByVal movie As Movie) As ActionResult
+        Function Edit(<Bind(Include:="ID,Title,ReleaseDate,Genre,Price")> ByVal movie As Movie) As ActionResult
             If ModelState.IsValid Then
                 db.Entry(movie).State = EntityState.Modified
                 db.SaveChanges()

@@ -7,7 +7,13 @@ End Code
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    @Using Html.BeginForm("Index", "Movies", FormMethod.Get)
+        @<p>Genre: @Html.DropDownList("movieGenre", "All")
+            Title: @Html.TextBox("SearchString") <br />
+         <input type="submit" value="Filter" class="btn btn-success" /></p>
+    End Using
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -40,7 +46,7 @@ End Code
             @Html.DisplayFor(Function(modelItem) item.Price)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", New With {.id = item.ID }) |
+            @Html.ActionLink("Edit", "Edit", New With {.id = item.ID}) |
             @Html.ActionLink("Details", "Details", New With {.id = item.ID }) |
             @Html.ActionLink("Delete", "Delete", New With {.id = item.ID })
         </td>
