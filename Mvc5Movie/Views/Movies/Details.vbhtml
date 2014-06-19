@@ -40,6 +40,15 @@ End Code
         <dd>
             @Html.DisplayFor(Function(model) model.Price)
         </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(Function(model) model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(Function(model) model.Rating)
+        </dd>
+
 
     </dl>
 </div>

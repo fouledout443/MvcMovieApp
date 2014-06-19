@@ -20,25 +20,28 @@ Namespace Migrations
                     .Title = "When Harry Met Sally",
                     .ReleaseDate = DateTime.Parse("1989-1-11"),
                     .Genre = "Romantic Comedy",
-                    .Price = 7.99D
+                    .Price = 7.99D,
+                    .Rating = "PG"
                 }, New Movie() With {
                     .Title = "Ghostbusters ",
                     .ReleaseDate = DateTime.Parse("1984-3-13"),
                     .Genre = "Comedy",
-                    .Price = 8.99D
+                    .Price = 8.99D,
+                    .Rating = "PG"
                 }, New Movie() With {
                     .Title = "Ghostbusters 2",
                     .ReleaseDate = DateTime.Parse("1986-2-23"),
                     .Genre = "Comedy",
-                    .Price = 9.99D
+                    .Price = 9.99D,
+                    .Rating = "PG"
                 }, New Movie() With {
                     .Title = "Rio Bravo",
                     .ReleaseDate = DateTime.Parse("1959-4-15"),
                     .Genre = "Western",
-                    .Price = 3.99D
+                    .Price = 3.99D,
+                    .Rating = "PG"
                 })
         End Sub
-
 
         'Initial seed method
         'Protected Overrides Sub Seed(context As Models.MovieDBContext)

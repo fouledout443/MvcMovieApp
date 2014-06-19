@@ -28,6 +28,9 @@ End Code
         <th>
             @Html.DisplayNameFor(Function(model) model.Price)
         </th>
+        <th>
+            @Html.DisplayNameFor(Function(model) model.Rating)
+        </th>
         <th></th>
     </tr>
 
@@ -44,6 +47,9 @@ End Code
         </td>
         <td>
             @Html.DisplayFor(Function(modelItem) item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(Function(modelItem) item.Rating)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", New With {.id = item.ID}) |
