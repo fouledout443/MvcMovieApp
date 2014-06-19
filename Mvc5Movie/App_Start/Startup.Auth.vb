@@ -26,7 +26,7 @@ Partial Public Class Startup
         '   appId:="",
         '   appSecret:="")
 
-        'app.UseGoogleAuthentication()
+        app.UseGoogleAuthentication()
     End Sub
 End Class
 

@@ -18,6 +18,7 @@ Namespace Mvc5Movie
         Private db As New MovieDBContext
 
         ' GET: /Movies/
+        <AllowAnonymous>
         Function Index(ByVal movieGenre As String, ByVal searchString As String) As ActionResult
             'Dim searchString As String = id
             Dim genreList As New List(Of String)
@@ -56,6 +57,7 @@ Namespace Mvc5Movie
         End Function
 
         ' GET: /Movies/Create
+        '<Authorize(Roles = "canEdit")>
         Function Create() As ActionResult
             Return View()
         End Function

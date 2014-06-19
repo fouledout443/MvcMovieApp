@@ -3,6 +3,8 @@ Imports System.Data.Entity
 Imports System.Data.Entity.Migrations
 Imports System.Linq
 Imports Mvc5Movie.Models
+Imports Microsoft.AspNet.Identity
+Imports Microsoft.AspNet.Identity.EntityFramework
 
 Namespace Migrations
 
@@ -12,7 +14,6 @@ Namespace Migrations
         Public Sub New()
             AutomaticMigrationsEnabled = False
         End Sub
-
 
         Protected Overrides Sub Seed(context As MovieDBContext)
             context.Movies.AddOrUpdate(Function(i) i.Title,
@@ -42,6 +43,23 @@ Namespace Migrations
                     .Rating = "PG"
                 })
         End Sub
+
+        Protected Function AddUserAndRole(context As ApplicationDbContext) As Boolean
+            Dim ir As IdentityResult
+            Dim rm = New RoleManager(Of IdentityRole)(New RoleStore(Of IdentityRole)(context))
+            ir = rm.Create(New IdentityRole("canEdit"))
+            Dim um = New UserManager(Of ApplicationUser)(New UserStore(Of ApplicationUser)(context))
+
+            Dim user = New ApplicationUser() With {.UserName = "monty@beltz.com"}
+
+            ir = um.Create(user, "pa55w0rd")
+            If ir.Succeeded = False Then
+                Return ir.Succeeded
+            End If
+
+            ir = um.AddToRole(user.Id, "canEdit")
+            Return ir.Succeeded
+        End Function 'test
 
         'Initial seed method
         'Protected Overrides Sub Seed(context As Models.MovieDBContext)
