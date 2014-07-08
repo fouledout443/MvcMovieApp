@@ -24,10 +24,10 @@ Namespace Models
 
     End Class
 
-    Public Class MovieDBContext
-        Inherits DbContext
-        'test...2
-        Public Property Movies As DbSet(Of Movie)
+    'Public Class MovieDBContext
+    '    Inherits DbContext
+    '    'test...2
+    '    'Public Property Movies As DbSet(Of Movie)
 
-    End Class
+    'End Class
 End Namespace

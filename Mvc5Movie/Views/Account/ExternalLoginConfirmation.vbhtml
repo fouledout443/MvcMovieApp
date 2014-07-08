@@ -25,6 +25,22 @@ End Code
             @Html.ValidationMessageFor(Function(m) m.UserName)
         </div>
     </div>
+    
+<div class="form-group">
+        @Html.LabelFor(Function(m) m.HomeTown, New With {.class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(Function(m) m.HomeTown, New With {.class = "form-control"})
+            @Html.ValidationMessageFor(Function(m) m.HomeTown)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(Function(m) m.BirthDate, New With {.class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(Function(m) m.BirthDate, New With {.class = "form-control"})
+            @Html.ValidationMessageFor(Function(m) m.BirthDate)
+        </div>
+    </div>
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Register" />

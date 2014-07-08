@@ -32,6 +32,18 @@ End Code
         </div>
     </div>
     <div class="form-group">
+        @Html.LabelFor(Function(m) m.Birthdate, New With {.class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.EditorFor(Function(m) m.Birthdate, New With {.class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(Function(m) m.Hometown, New With {.class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(Function(m) m.Hometown, New With {.class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Register" />
         </div>

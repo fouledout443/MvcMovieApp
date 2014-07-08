@@ -190,26 +190,21 @@
     <Compile Include="App_Start\RouteConfig.vb" />
     <Compile Include="App_Start\Startup.Auth.vb" />
     <Compile Include="Controllers\AccountController.vb" />
+    <Compile Include="Controllers\ContactsController.vb" />
     <Compile Include="Controllers\HelloWorldController.vb" />
     <Compile Include="Controllers\MoviesController.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201406070013421_Initial.Designer.vb">
-      <DependentUpon>201406070013421_Initial.vb</DependentUpon>
+    <Compile Include="Migrations\201407080532260_initialMigration.Designer.vb">
+      <DependentUpon>201407080532260_initialMigration.vb</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201406070013421_Initial.vb" />
-    <Compile Include="Migrations\201406070049497_Rating.Designer.vb">
-      <DependentUpon>201406070049497_Rating.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201406070049497_Rating.vb" />
-    <Compile Include="Migrations\201406070121417_DataAnnotations.Designer.vb">
-      <DependentUpon>201406070121417_DataAnnotations.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201406070121417_DataAnnotations.vb" />
+    <Compile Include="Migrations\201407080532260_initialMigration.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="Models\AccountViewModels.vb" />
+    <Compile Include="Models\Contact.vb" />
     <Compile Include="Models\IdentityModels.vb" />
+    <Compile Include="Models\MontyRentalDb.vb" />
     <Compile Include="Models\Movie.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -230,14 +225,8 @@
     <Compile Include="Startup.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201406070013421_Initial.resx">
-      <DependentUpon>201406070013421_Initial.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201406070049497_Rating.resx">
-      <DependentUpon>201406070049497_Rating.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201406070121417_DataAnnotations.resx">
-      <DependentUpon>201406070121417_DataAnnotations.vb</DependentUpon>
+    <EmbeddedResource Include="Migrations\201407080532260_initialMigration.resx">
+      <DependentUpon>201407080532260_initialMigration.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -289,6 +278,11 @@
     <Content Include="Views\Movies\Details.vbhtml" />
     <Content Include="Views\Movies\Edit.vbhtml" />
     <Content Include="Views\Movies\Index.vbhtml" />
+    <Content Include="Views\Contacts\Create.vbhtml" />
+    <Content Include="Views\Contacts\Delete.vbhtml" />
+    <Content Include="Views\Contacts\Details.vbhtml" />
+    <Content Include="Views\Contacts\Edit.vbhtml" />
+    <Content Include="Views\Contacts\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -298,7 +292,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

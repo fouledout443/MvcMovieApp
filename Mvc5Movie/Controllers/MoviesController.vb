@@ -15,7 +15,7 @@ Namespace Mvc5Movie
     Public Class MoviesController
         Inherits System.Web.Mvc.Controller
 
-        Private db As New MovieDBContext
+        Private db As New MontyRentalDb
 
         ' GET: /Movies/
         <AllowAnonymous>

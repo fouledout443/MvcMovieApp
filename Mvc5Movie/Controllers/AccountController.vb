@@ -4,6 +4,7 @@ Imports Microsoft.AspNet.Identity
 Imports Microsoft.AspNet.Identity.EntityFramework
 Imports Microsoft.AspNet.Identity.Owin
 Imports Microsoft.Owin.Security
+Imports Mvc5Movie.Models
 
 <Authorize>
 Public Class AccountController
@@ -63,10 +64,12 @@ Public Class AccountController
     Public Async Function Register(model As RegisterViewModel) As Task(Of ActionResult)
         If ModelState.IsValid Then
             ' Create a local login before signing in the user
-            Dim user = New ApplicationUser() With {.UserName = model.UserName}
-            Dim result = Await UserManager.CreateAsync(User, model.Password)
+            Dim user = New ApplicationUser() With {.UserName = model.UserName,
+                                                   .Hometown = model.Hometown,
+                                                   .Birthdate = model.Birthdate}
+            Dim result = Await UserManager.CreateAsync(user, model.Password)
             If result.Succeeded Then
-                Await SignInAsync(User, isPersistent:=False)
+                Await SignInAsync(user, isPersistent:=False)
                 Return RedirectToAction("Index", "Home")
             Else
                 AddErrors(result)
@@ -227,7 +230,11 @@ Public Class AccountController
             If info Is Nothing Then
                 Return View("ExternalLoginFailure")
             End If
-            Dim user = New ApplicationUser() With {.UserName = model.UserName}
+            Dim user = New ApplicationUser() With {
+                .UserName = model.UserName,
+                .BirthDate = model.BirthDate,
+                .Hometown = model.BirthDate}
+
             Dim result = Await UserManager.CreateAsync(user)
             If result.Succeeded Then
                 result = Await UserManager.AddLoginAsync(user.Id, info.Login)
